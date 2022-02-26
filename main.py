@@ -29,6 +29,7 @@ def savefile():
 		with open(filepath, 'w') as f:
 			code = editor.get('1.0', END)
 			f.write(code)
+			setfilepath(filepath)
 			root.wm_title("Tedit - " + filepath)
 
 def saveasfile():
@@ -48,7 +49,7 @@ root.iconbitmap("icons/tedit.ico")
 editor = ScrolledText(wrap=WORD, undo=True)
 editor.pack(fill=BOTH, expand=True)
 menubar = Menu(root)
-fileMenu = Menu(menubar, tearoff=False)
+fileMenu = Menu(menubar, tearoff=0)
 fileMenu.add_command(label="Ouvrir", command=openfile)
 fileMenu.add_command(label="Enregistrer", command=savefile, accelerator="Ctrl+S")
 fileMenu.add_command(label="Enregistrer sous", command=saveasfile)
